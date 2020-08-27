@@ -5,10 +5,10 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 // Define all routes and call respective controllers
-router.get('/', productsController.getAllProducts);
-router.get('/:id', productsController.getOneProduct);
-router.post('/', productsController.createProduct);
-router.put('/:id', productsController.modifyProduct);
-router.delete('/:id', productsController.deleteProduct);
+router.get('/', auth, productsController.getAllProducts);
+router.get('/:id', auth, productsController.getOneProduct);
+router.post('/', auth, multer, productsController.createProduct);
+router.put('/:id', auth, multer, productsController.modifyProduct);
+router.delete('/:id', auth, productsController.deleteProduct);
 
 module.exports = router;
